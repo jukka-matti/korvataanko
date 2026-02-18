@@ -31,6 +31,7 @@ export function Simulator() {
   const [justification, setJustification] = useState('');
   const [approvedAmountInput, setApprovedAmountInput] = useState('');
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const claim = claims[currentIndex];
 
@@ -72,6 +73,9 @@ export function Simulator() {
     } else {
       setCurrentIndex(i => i + 1);
     }
+
+    // Scroll back to top of simulator for the next claim
+    containerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const reset = useCallback((newMode?: Mode) => {
@@ -85,6 +89,9 @@ export function Simulator() {
     setJustification('');
     setApprovedAmountInput('');
     if (newMode) setMode(newMode);
+
+    // Scroll back to top when resetting/starting
+    containerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, []);
 
   const decisionColor = (d: Decision) =>
@@ -112,21 +119,19 @@ export function Simulator() {
           <div className="inline-flex bg-white rounded-2xl p-1.5 shadow-lg border border-slate-200">
             <button
               onClick={() => { if (mode !== 'before') reset('before'); }}
-              className={`px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${
-                mode === 'before'
-                  ? 'bg-slate-800 text-white shadow-md'
-                  : 'text-slate-500 hover:text-slate-700'
-              }`}
+              className={`px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${mode === 'before'
+                ? 'bg-slate-800 text-white shadow-md'
+                : 'text-slate-500 hover:text-slate-700'
+                }`}
             >
               {tr.beforeLabel}
             </button>
             <button
               onClick={() => { if (mode !== 'after') reset('after'); }}
-              className={`px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${
-                mode === 'after'
-                  ? 'bg-indigo-600 text-white shadow-md'
-                  : 'text-slate-500 hover:text-slate-700'
-              }`}
+              className={`px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${mode === 'after'
+                ? 'bg-indigo-600 text-white shadow-md'
+                : 'text-slate-500 hover:text-slate-700'
+                }`}
             >
               {tr.afterLabel}
             </button>
@@ -134,13 +139,11 @@ export function Simulator() {
         </div>
 
         {/* Main Panel */}
-        <div className={`rounded-3xl shadow-2xl overflow-hidden border transition-all duration-500 ${
-          mode === 'before' ? 'border-slate-300' : 'border-indigo-200'
-        }`}>
-          {/* Header bar */}
-          <div className={`px-8 py-5 flex items-center justify-between ${
-            mode === 'before' ? 'bg-slate-800' : 'bg-indigo-600'
+        <div className={`rounded-3xl shadow-2xl overflow-hidden border transition-all duration-500 ${mode === 'before' ? 'border-slate-300' : 'border-indigo-200'
           }`}>
+          {/* Header bar */}
+          <div className={`px-8 py-5 flex items-center justify-between ${mode === 'before' ? 'bg-slate-800' : 'bg-indigo-600'
+            }`}>
             <div>
               <h3 className="text-white font-bold text-lg">
                 {mode === 'before' ? tr.beforeTitle : tr.afterTitle}
@@ -241,18 +244,16 @@ export function Simulator() {
                       <button
                         key={i}
                         onClick={() => setManualStep(s => Math.max(s, i + 1))}
-                        className={`flex items-center gap-3 p-3 rounded-xl border text-left transition-all duration-200 ${
-                          manualStep > i
-                            ? 'bg-emerald-50 border-emerald-200 text-emerald-700'
-                            : manualStep === i
+                        className={`flex items-center gap-3 p-3 rounded-xl border text-left transition-all duration-200 ${manualStep > i
+                          ? 'bg-emerald-50 border-emerald-200 text-emerald-700'
+                          : manualStep === i
                             ? 'bg-amber-50 border-amber-200 text-amber-700 cursor-pointer hover:bg-amber-100'
                             : 'bg-slate-50 border-slate-200 text-slate-400 cursor-not-allowed'
-                        }`}
+                          }`}
                         disabled={manualStep < i}
                       >
-                        <span className={`w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 ${
-                          manualStep > i ? 'bg-emerald-500 text-white' : 'bg-slate-300 text-white'
-                        }`}>{manualStep > i ? '✓' : i + 1}</span>
+                        <span className={`w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 ${manualStep > i ? 'bg-emerald-500 text-white' : 'bg-slate-300 text-white'
+                          }`}>{manualStep > i ? '✓' : i + 1}</span>
                         <span className="text-sm font-medium">{step}</span>
                       </button>
                     ))}
@@ -394,23 +395,21 @@ export function Simulator() {
                     </div>
 
                     {/* AI Recommendation */}
-                    <div className={`rounded-2xl p-5 mb-6 border ${
-                      claim.aiRecommendation === 'approve'
-                        ? 'bg-emerald-50 border-emerald-200'
-                        : claim.aiRecommendation === 'reject'
+                    <div className={`rounded-2xl p-5 mb-6 border ${claim.aiRecommendation === 'approve'
+                      ? 'bg-emerald-50 border-emerald-200'
+                      : claim.aiRecommendation === 'reject'
                         ? 'bg-red-50 border-red-200'
                         : 'bg-amber-50 border-amber-200'
-                    }`}>
+                      }`}>
                       <div className="flex items-center justify-between mb-2">
-                        <p className={`text-xs font-semibold uppercase tracking-wide ${
-                          claim.aiRecommendation === 'approve' ? 'text-emerald-600'
+                        <p className={`text-xs font-semibold uppercase tracking-wide ${claim.aiRecommendation === 'approve' ? 'text-emerald-600'
                           : claim.aiRecommendation === 'reject' ? 'text-red-600' : 'text-amber-600'
-                        }`}>
+                          }`}>
                           {tr.aiRecommendation}: {claim.aiRecommendation === 'approve'
                             ? (lang === 'fi' ? '✓ Hyväksy' : '✓ Approve')
                             : claim.aiRecommendation === 'reject'
-                            ? (lang === 'fi' ? '✗ Hylkää' : '✗ Reject')
-                            : (lang === 'fi' ? '⚑ Tarkista' : '⚑ Flag')}
+                              ? (lang === 'fi' ? '✗ Hylkää' : '✗ Reject')
+                              : (lang === 'fi' ? '⚑ Tarkista' : '⚑ Flag')}
                         </p>
                         <span className="text-xs font-bold text-slate-600 bg-white rounded-full px-3 py-1 border">
                           {tr.confidence}: {claim.aiConfidence}%
