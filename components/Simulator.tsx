@@ -139,8 +139,11 @@ export function Simulator() {
         </div>
 
         {/* Main Panel */}
-        <div className={`rounded-3xl shadow-2xl overflow-hidden border transition-all duration-500 ${mode === 'before' ? 'border-slate-300' : 'border-indigo-200'
-          }`}>
+        <div
+          ref={containerRef}
+          className={`rounded-3xl shadow-2xl overflow-hidden border transition-all duration-500 scroll-mt-24 ${mode === 'before' ? 'border-slate-300' : 'border-indigo-200'
+            }`}
+        >
           {/* Header bar */}
           <div className={`px-8 py-5 flex items-center justify-between ${mode === 'before' ? 'bg-slate-800' : 'bg-indigo-600'
             }`}>
