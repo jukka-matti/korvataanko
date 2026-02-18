@@ -1,0 +1,20 @@
+# SHIFT. / Korvataanko.fi
+
+> An interactive exploration of how AI is fundamentally shifting knowledge work.
+
+## Overview
+SHIFT. (known as Korvataanko.fi in Finland) is an interactive experience that contrasts two worlds: one without AI and one with AI assistance. It uses a "claims handling" simulator to demonstrate the productivity shift and its implications for human expertise.
+
+## Core Content
+- **The Story**: Follows Maiju (Strategy Consultant) and Jere (Claims Handler) as they navigate the AI revolution.
+- **The Simulator**: An interactive tool where users process insurance claims with and without AI assistance to see the difference in speed and quality.
+- **Themes**: Multiple visual skins reflecting different cultural and industry contexts (International Professional, Finnish Warm, Insurance Document).
+
+## Key Links
+- [Home Page](https://korvataanko.fi/)
+- [Maiju's Strategy Research](https://korvataanko.fi/maiju)
+- [Theme Explorer](https://korvataanko.fi/themes)
+- [Privacy Policy](https://korvataanko.fi/tietosuoja)
+
+## Context for LLMs
+This project is an educational and thought-provoking tool inspired by Juhani Mykkänen. It is built as a Next.js PWA and emphasizes privacy (no cookies, no trackers).

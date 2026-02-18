@@ -1,0 +1,42 @@
+# SHIFT. / Korvataanko.fi — Full Context
+
+## Mission
+To demonstrate through interaction that AI doesn't just replace people—it transforms the value and nature of their expertise.
+
+## Personas & Narratives
+
+### Maiju (The Adapter)
+- **Role**: Strategy Consultant
+- **Before**: 3 days to draft a presentation.
+- **After**: 10 minutes to generate structure and numbers using AI.
+- **Result**: Starts at 70% finished, focusing her time on refining and high-level strategy.
+
+### Jere (The Challenged)
+- **Role**: Insurance Claims Handler
+- **Before**: 18 cases a day, manual verification.
+- **After**: 35 cases a day, AI categorizes and suggests, Jere reviews.
+- **Result**: Productivity doubles, meaning a team that previously needed 6 people now fits into 3.
+
+## The Simulator Logic
+The simulator is a controlled experiment where users process claims:
+1. **Manual Mode**: User performs all checks (policy, coverage, calculation) manually.
+2. **AI-Assisted Mode**: AI provides a summary, recommendation, and confidence score. The user validates the AI's work.
+
+### Claims Data Examples
+The simulator uses a `claimsData.ts` dataset including categories like:
+- Travel (Cancelation, Delay)
+- Technology (Screen repair, Theft)
+- Home (Water damage, Power surge)
+- Health (Medical fees)
+
+## Technical Architecture
+- **Framework**: Next.js 16 (App Router)
+- **Styling**: TailwindCSS 4
+- **State**: React context for Language and Themes
+- **Privacy**: No cookies, no trackers, Vercel hosting.
+- **PWA**: Fully functional offline via `@ducanh2912/next-pwa`.
+
+## Brand Values
+- **RDMAIC Oy**: The data controller and organization behind the project.
+- **Transparency**: Clear privacy policy and zero-tracking commitment.
+- **Innovation**: Applying AI to the presentation of AI concepts.
