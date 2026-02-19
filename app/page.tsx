@@ -63,7 +63,7 @@ export default function Home() {
           </span>
 
           {/* Title */}
-          <h1 className={`text-6xl md:text-8xl font-black ${theme.heroTitleColor} mb-6 leading-tight tracking-tight transition-colors duration-500 ${isC ? 'font-mono text-5xl md:text-7xl' : ''}`}>
+          <h1 className={`text-5xl sm:text-6xl md:text-8xl font-black ${theme.heroTitleColor} mb-6 leading-tight tracking-tight transition-colors duration-500 ${isC ? 'font-mono !text-4xl sm:!text-5xl md:!text-7xl' : ''}`}>
             {tr.hero.title}
           </h1>
 

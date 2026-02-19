@@ -119,7 +119,7 @@ export function Simulator() {
           <div className="inline-flex bg-white rounded-2xl p-1.5 shadow-lg border border-slate-200">
             <button
               onClick={() => { if (mode !== 'before') reset('before'); }}
-              className={`px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${mode === 'before'
+              className={`px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${mode === 'before'
                 ? 'bg-slate-800 text-white shadow-md'
                 : 'text-slate-500 hover:text-slate-700'
                 }`}
@@ -128,7 +128,7 @@ export function Simulator() {
             </button>
             <button
               onClick={() => { if (mode !== 'after') reset('after'); }}
-              className={`px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${mode === 'after'
+              className={`px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${mode === 'after'
                 ? 'bg-indigo-600 text-white shadow-md'
                 : 'text-slate-500 hover:text-slate-700'
                 }`}
@@ -145,10 +145,10 @@ export function Simulator() {
             }`}
         >
           {/* Header bar */}
-          <div className={`px-8 py-5 flex items-center justify-between ${mode === 'before' ? 'bg-slate-800' : 'bg-indigo-600'
+          <div className={`px-4 py-3 sm:px-6 md:px-8 md:py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4 ${mode === 'before' ? 'bg-slate-800' : 'bg-indigo-600'
             }`}>
             <div>
-              <h3 className="text-white font-bold text-lg">
+              <h3 className="text-white font-bold text-base sm:text-lg">
                 {mode === 'before' ? tr.beforeTitle : tr.afterTitle}
               </h3>
               {started && !done && (
@@ -158,14 +158,14 @@ export function Simulator() {
               )}
             </div>
             {started && (
-              <div className="flex gap-6 text-right">
+              <div className="flex gap-4 sm:gap-6 sm:text-right">
                 <div>
                   <p className="text-white/60 text-xs uppercase tracking-wide">{tr.timeElapsed}</p>
-                  <p className="text-white font-mono text-xl font-bold">{formatTime(elapsedSeconds)}</p>
+                  <p className="text-white font-mono text-lg sm:text-xl font-bold">{formatTime(elapsedSeconds)}</p>
                 </div>
                 <div>
                   <p className="text-white/60 text-xs uppercase tracking-wide">{tr.claimsProcessed}</p>
-                  <p className="text-white font-mono text-xl font-bold">{processed.length}</p>
+                  <p className="text-white font-mono text-lg sm:text-xl font-bold">{processed.length}</p>
                 </div>
               </div>
             )}
@@ -174,7 +174,7 @@ export function Simulator() {
           <div className="bg-white">
             {/* Not started */}
             {!started && !done && (
-              <div className="flex flex-col items-center justify-center py-20 px-8 text-center">
+              <div className="flex flex-col items-center justify-center py-12 px-4 sm:py-16 sm:px-6 md:py-20 md:px-8 text-center">
                 {mode === 'before' ? (
                   <>
                     <div className="text-6xl mb-6">📋</div>
@@ -223,7 +223,7 @@ export function Simulator() {
 
             {/* BEFORE mode - active */}
             {started && !done && mode === 'before' && claim && (
-              <div className="p-8">
+              <div className="p-4 sm:p-6 md:p-8">
                 {/* Claim header */}
                 <div className="flex flex-wrap items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-100">
                   <div>
@@ -235,7 +235,7 @@ export function Simulator() {
                   </div>
                   <div className="text-right">
                     <p className="text-xs text-slate-400 uppercase tracking-wide">{lang === 'fi' ? 'Vaadittu korvaus' : 'Claimed'}</p>
-                    <p className="text-3xl font-bold text-slate-900">€{claim.claimedAmount.toLocaleString()}</p>
+                    <p className="text-2xl sm:text-3xl font-bold text-slate-900">€{claim.claimedAmount.toLocaleString()}</p>
                   </div>
                 </div>
 
@@ -287,7 +287,7 @@ export function Simulator() {
 
                   {manualStep >= 2 && (
                     <>
-                      <div className="grid grid-cols-2 gap-4 mb-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                         <div>
                           <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1">{tr.approvedAmount} (€)</label>
                           <input
@@ -320,7 +320,7 @@ export function Simulator() {
                             value={justification}
                             onChange={e => setJustification(e.target.value)}
                             placeholder={tr.justification}
-                            className="w-full border border-slate-300 rounded-xl px-4 py-3 text-slate-700 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-slate-400 h-24"
+                            className="w-full border border-slate-300 rounded-xl px-4 py-3 text-slate-700 text-base sm:text-sm resize-none focus:outline-none focus:ring-2 focus:ring-slate-400 h-24"
                           />
                         </div>
                       )}
@@ -330,25 +330,25 @@ export function Simulator() {
 
 
                 {/* Decision buttons */}
-                <div className="flex gap-3 flex-wrap">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <button
                     onClick={() => handleDecision('approve')}
                     disabled={manualStep < 3 || justification.length < 5}
-                    className="flex-1 min-w-[120px] bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-200 disabled:text-slate-400 disabled:cursor-not-allowed text-white py-3 rounded-xl font-semibold transition-all duration-200 active:scale-95"
+                    className="bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-200 disabled:text-slate-400 disabled:cursor-not-allowed text-white py-3 rounded-xl font-semibold transition-all duration-200 active:scale-95"
                   >
                     ✓ {tr.approve}
                   </button>
                   <button
                     onClick={() => handleDecision('reject')}
                     disabled={manualStep < 3 || justification.length < 5}
-                    className="flex-1 min-w-[120px] bg-red-600 hover:bg-red-700 disabled:bg-slate-200 disabled:text-slate-400 disabled:cursor-not-allowed text-white py-3 rounded-xl font-semibold transition-all duration-200 active:scale-95"
+                    className="bg-red-600 hover:bg-red-700 disabled:bg-slate-200 disabled:text-slate-400 disabled:cursor-not-allowed text-white py-3 rounded-xl font-semibold transition-all duration-200 active:scale-95"
                   >
                     ✗ {tr.reject}
                   </button>
                   <button
                     onClick={() => handleDecision('flag')}
                     disabled={manualStep < 3 || justification.length < 5}
-                    className="flex-1 min-w-[120px] bg-amber-500 hover:bg-amber-600 disabled:bg-slate-200 disabled:text-slate-400 disabled:cursor-not-allowed text-white py-3 rounded-xl font-semibold transition-all duration-200 active:scale-95"
+                    className="bg-amber-500 hover:bg-amber-600 disabled:bg-slate-200 disabled:text-slate-400 disabled:cursor-not-allowed text-white py-3 rounded-xl font-semibold transition-all duration-200 active:scale-95"
                   >
                     ⚑ {tr.flag}
                   </button>
@@ -368,7 +368,7 @@ export function Simulator() {
 
             {/* AFTER mode - active */}
             {started && !done && mode === 'after' && claim && (
-              <div className="p-8">
+              <div className="p-4 sm:p-6 md:p-8">
                 {/* AI processing animation */}
                 {aiProcessing ? (
                   <div className="flex flex-col items-center justify-center py-12">
@@ -401,7 +401,7 @@ export function Simulator() {
                       </div>
                       <div className="text-right">
                         <p className="text-xs text-slate-400 uppercase tracking-wide">{lang === 'fi' ? 'Vaadittu korvaus' : 'Claimed'}</p>
-                        <p className="text-3xl font-bold text-slate-900">€{claim.claimedAmount.toLocaleString()}</p>
+                        <p className="text-2xl sm:text-3xl font-bold text-slate-900">€{claim.claimedAmount.toLocaleString()}</p>
                       </div>
                     </div>
 
@@ -446,22 +446,22 @@ export function Simulator() {
                     </div>
 
                     {/* Decision buttons */}
-                    <div className="flex gap-3 flex-wrap">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                       <button
                         onClick={() => handleDecision('approve')}
-                        className="flex-1 min-w-[120px] bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-semibold transition-all duration-200 active:scale-95 shadow-sm"
+                        className="bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-semibold transition-all duration-200 active:scale-95 shadow-sm"
                       >
                         ✓ {tr.approve}
                       </button>
                       <button
                         onClick={() => handleDecision('reject')}
-                        className="flex-1 min-w-[120px] bg-red-600 hover:bg-red-700 text-white py-3 rounded-xl font-semibold transition-all duration-200 active:scale-95 shadow-sm"
+                        className="bg-red-600 hover:bg-red-700 text-white py-3 rounded-xl font-semibold transition-all duration-200 active:scale-95 shadow-sm"
                       >
                         ✗ {tr.reject}
                       </button>
                       <button
                         onClick={() => handleDecision('flag')}
-                        className="flex-1 min-w-[120px] bg-amber-500 hover:bg-amber-600 text-white py-3 rounded-xl font-semibold transition-all duration-200 active:scale-95 shadow-sm"
+                        className="bg-amber-500 hover:bg-amber-600 text-white py-3 rounded-xl font-semibold transition-all duration-200 active:scale-95 shadow-sm"
                       >
                         ⚑ {tr.flag}
                       </button>
@@ -473,7 +473,7 @@ export function Simulator() {
 
             {/* Done / Summary */}
             {done && (
-              <div className="p-8">
+              <div className="p-4 sm:p-6 md:p-8">
                 <div className="text-center mb-8">
                   <div className="text-5xl mb-4">{mode === 'before' ? '😓' : '⚡'}</div>
                   <h4 className="text-2xl font-bold text-slate-900 mb-2">
@@ -487,20 +487,20 @@ export function Simulator() {
                 </div>
 
                 {/* Stats */}
-                <div className="grid grid-cols-3 gap-4 mb-8">
-                  <div className="bg-slate-50 rounded-2xl p-4 text-center">
-                    <p className="text-3xl font-bold text-slate-900">{processed.length}</p>
-                    <p className="text-xs text-slate-500 mt-1 uppercase tracking-wide">{lang === 'fi' ? 'Tapausta' : 'Claims'}</p>
+                <div className="grid grid-cols-3 gap-2 sm:gap-4 mb-8">
+                  <div className="bg-slate-50 rounded-2xl p-3 sm:p-4 text-center">
+                    <p className="text-2xl sm:text-3xl font-bold text-slate-900">{processed.length}</p>
+                    <p className="text-[10px] sm:text-xs text-slate-500 mt-1 uppercase tracking-wide">{lang === 'fi' ? 'Tapausta' : 'Claims'}</p>
                   </div>
-                  <div className="bg-slate-50 rounded-2xl p-4 text-center">
-                    <p className="text-3xl font-bold text-slate-900">{formatTime(elapsedSeconds)}</p>
-                    <p className="text-xs text-slate-500 mt-1 uppercase tracking-wide">{lang === 'fi' ? 'Kokonaisaika' : 'Total time'}</p>
+                  <div className="bg-slate-50 rounded-2xl p-3 sm:p-4 text-center">
+                    <p className="text-2xl sm:text-3xl font-bold text-slate-900">{formatTime(elapsedSeconds)}</p>
+                    <p className="text-[10px] sm:text-xs text-slate-500 mt-1 uppercase tracking-wide">{lang === 'fi' ? 'Kokonaisaika' : 'Total time'}</p>
                   </div>
-                  <div className="bg-slate-50 rounded-2xl p-4 text-center">
-                    <p className="text-3xl font-bold text-slate-900">
+                  <div className="bg-slate-50 rounded-2xl p-3 sm:p-4 text-center">
+                    <p className="text-2xl sm:text-3xl font-bold text-slate-900">
                       {mode === 'before' ? '18' : '35'}
                     </p>
-                    <p className="text-xs text-slate-500 mt-1 uppercase tracking-wide">{lang === 'fi' ? 'Tapauksia/pv (ennuste)' : 'Claims/day (projected)'}</p>
+                    <p className="text-[10px] sm:text-xs text-slate-500 mt-1 uppercase tracking-wide">{lang === 'fi' ? 'Tapauksia/pv' : 'Claims/day'}</p>
                   </div>
                 </div>
 

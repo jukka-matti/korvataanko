@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLang } from './LanguageProvider';
@@ -14,6 +15,7 @@ export function NavBar() {
   const pathname = usePathname();
   const isMaiju = pathname === '/maiju';
   const isThemes = pathname === '/themes';
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 ${theme.navBg} transition-colors duration-500`}>
@@ -34,7 +36,7 @@ export function NavBar() {
           </span>
         </Link>
 
-        {/* Nav links */}
+        {/* Desktop nav links */}
         <div className="flex items-center gap-6">
           {!isMaiju && (
             <>
@@ -85,6 +87,62 @@ export function NavBar() {
           </Link>
 
           <LanguageToggle />
+
+          {/* Mobile hamburger button */}
+          <button
+            onClick={() => setMobileOpen(o => !o)}
+            className="sm:hidden flex flex-col items-center justify-center w-8 h-8 gap-1.5"
+            aria-label="Toggle menu"
+          >
+            <span className={`block w-5 h-0.5 bg-current transition-all duration-200 ${theme.navLinkColor} ${mobileOpen ? 'translate-y-2 rotate-45' : ''}`} />
+            <span className={`block w-5 h-0.5 bg-current transition-all duration-200 ${theme.navLinkColor} ${mobileOpen ? 'opacity-0' : ''}`} />
+            <span className={`block w-5 h-0.5 bg-current transition-all duration-200 ${theme.navLinkColor} ${mobileOpen ? '-translate-y-2 -rotate-45' : ''}`} />
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile menu dropdown */}
+      <div className={`sm:hidden overflow-hidden transition-all duration-300 ${theme.navBg} ${mobileOpen ? 'max-h-80 border-t border-white/10' : 'max-h-0'}`}>
+        <div className="px-4 py-3 flex flex-col gap-1">
+          {!isMaiju && (
+            <>
+              <a
+                href="#story"
+                onClick={() => setMobileOpen(false)}
+                className={`block px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${theme.navLinkColor} hover:bg-white/10`}
+              >
+                {tr.nav.story}
+              </a>
+              <a
+                href="#simulator"
+                onClick={() => setMobileOpen(false)}
+                className={`block px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${theme.navLinkColor} hover:bg-white/10`}
+              >
+                {tr.nav.simulator}
+              </a>
+            </>
+          )}
+          <Link
+            href="/themes"
+            onClick={() => setMobileOpen(false)}
+            className={`block px-3 py-2.5 rounded-xl text-sm font-medium transition-colors hover:bg-white/10 ${isThemes ? 'text-white font-semibold' : theme.navLinkColor}`}
+          >
+            {tr.nav.themes}
+          </Link>
+          <Link
+            href="/making-of"
+            onClick={() => setMobileOpen(false)}
+            className={`block px-3 py-2.5 rounded-xl text-sm font-medium transition-colors hover:bg-white/10 ${pathname === '/making-of' ? 'text-indigo-400 font-semibold' : theme.navLinkColor}`}
+          >
+            {tr.makingOf.navLabel}
+          </Link>
+          <Link
+            href="/maiju"
+            onClick={() => setMobileOpen(false)}
+            className={`block px-3 py-2.5 rounded-xl text-sm font-semibold transition-colors hover:bg-white/10 ${isMaiju ? theme.navMaijuLinkActive : theme.navMaijuLink}`}
+          >
+            ✦ {tr.nav.strategy}
+          </Link>
         </div>
       </div>
     </nav>
