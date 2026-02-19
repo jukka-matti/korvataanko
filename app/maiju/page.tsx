@@ -382,7 +382,7 @@ export default function MaijuPage() {
             <button
               onClick={prev}
               aria-label="Previous slide"
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 w-12 h-12 bg-white rounded-2xl shadow-lg border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-slate-50 hover:shadow-xl transition-all active:scale-[0.92] focus:outline-none focus:ring-2 focus:ring-teal-500"
+              className="absolute left-1 top-1/2 -translate-y-1/2 md:left-0 md:-translate-x-6 w-10 h-10 md:w-12 md:h-12 bg-white/90 md:bg-white rounded-xl md:rounded-2xl shadow-lg border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-slate-50 hover:shadow-xl transition-all active:scale-[0.92] focus:outline-none focus:ring-2 focus:ring-teal-500"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -391,7 +391,7 @@ export default function MaijuPage() {
             <button
               onClick={next}
               aria-label="Next slide"
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 w-12 h-12 bg-white rounded-2xl shadow-lg border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-slate-50 hover:shadow-xl transition-all active:scale-[0.92] focus:outline-none focus:ring-2 focus:ring-teal-500"
+              className="absolute right-1 top-1/2 -translate-y-1/2 md:right-0 md:translate-x-6 w-10 h-10 md:w-12 md:h-12 bg-white/90 md:bg-white rounded-xl md:rounded-2xl shadow-lg border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-slate-50 hover:shadow-xl transition-all active:scale-[0.92] focus:outline-none focus:ring-2 focus:ring-teal-500"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

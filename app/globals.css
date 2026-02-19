@@ -52,3 +52,15 @@ button,
     opacity: unset;
   }
 }
+
+/* Prevent overscroll bounce/pull-to-refresh interfering with in-page interactions */
+html {
+  overscroll-behavior-y: none;
+}
+
+/* Prevent accidental text selection on interactive UI during long-press */
+button,
+[role="button"] {
+  -webkit-user-select: none;
+  user-select: none;
+}

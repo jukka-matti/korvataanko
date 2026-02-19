@@ -15,7 +15,7 @@ export function ThemeSwitcher() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end pointer-events-none">
 
       {/* Panel */}
       <div
@@ -109,7 +109,7 @@ export function ThemeSwitcher() {
       {/* Toggle button */}
       <button
         onClick={() => setOpen((o) => !o)}
-        className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl shadow-xl flex items-center justify-center text-lg sm:text-xl transition-all duration-200 hover:shadow-2xl active:scale-[0.92] border ${
+        className={`pointer-events-auto w-12 h-12 sm:w-14 sm:h-14 rounded-2xl shadow-xl flex items-center justify-center text-lg sm:text-xl transition-all duration-200 hover:shadow-2xl active:scale-[0.92] border ${
           open
             ? 'bg-slate-900 border-slate-700 rotate-12'
             : 'bg-white border-slate-200 hover:border-slate-300'
