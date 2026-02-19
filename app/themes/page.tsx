@@ -230,7 +230,7 @@ export default function ThemesPage() {
                       <button
                         onClick={() => activateTheme(id)}
                         disabled={isActive}
-                        className={`mt-5 w-full py-3 rounded-xl font-semibold text-sm transition-all active:scale-95 ${
+                        className={`mt-5 w-full py-3.5 rounded-xl font-semibold text-sm transition-all active:scale-[0.98] ${
                           isActive
                             ? 'bg-slate-100 text-slate-400 cursor-default'
                             : ACTIVATE_BTN[id]

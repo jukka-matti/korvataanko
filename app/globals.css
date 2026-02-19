@@ -24,3 +24,31 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* ── Mobile touch fixes ── */
+
+/* Remove 300ms tap delay on all interactive elements */
+a,
+button,
+input,
+select,
+textarea,
+[role="button"] {
+  touch-action: manipulation;
+}
+
+/* Remove default tap highlight that overlays custom button styles */
+a,
+button,
+[role="button"] {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Prevent hover states from sticking on touch-only devices */
+@media (hover: none) {
+  a:hover,
+  button:hover {
+    filter: none !important;
+    opacity: unset;
+  }
+}

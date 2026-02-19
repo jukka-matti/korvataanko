@@ -78,13 +78,13 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="#simulator"
-              className={`px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 active:scale-95 ${theme.heroPrimaryBtn} ${isC ? 'rounded-none border-2 border-red-600' : ''}`}
+              className={`px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 active:scale-[0.97] ${theme.heroPrimaryBtn} ${isC ? 'rounded-none border-2 border-red-600' : ''}`}
             >
               {isC ? `[ ${tr.hero.cta} ]` : `${tr.hero.cta} →`}
             </a>
             <a
               href="#story"
-              className={`px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 ${theme.heroSecondaryBtn} ${isC ? 'rounded-none' : ''}`}
+              className={`px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 active:scale-[0.97] ${theme.heroSecondaryBtn} ${isC ? 'rounded-none' : ''}`}
             >
               {isC ? `> ${tr.hero.scroll}` : `${tr.hero.scroll} ↓`}
             </a>
