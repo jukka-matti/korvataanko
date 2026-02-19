@@ -76,6 +76,11 @@ export const t = {
       description: 'See how this entire project – from idea to deployment – was built using AI assistance. Watch the full breakdown on the Variation Scouting channel.',
       watchButton: 'Watch on YouTube',
       back: 'Back to Home',
+      techTitle: 'For the Technical Audience',
+      techDescription: 'This entire site is open source. Explore the code, fork it, or use it as a reference for your own AI-assisted projects.',
+      githubButton: 'View on GitHub',
+      mobileFixTitle: 'Mobile Experience Fix',
+      mobileFixDescription: 'The mobile experience was fixed with just 3 prompts using Claude Code & Opus 4.6. From identifying issues to a polished mobile UI — all through conversational AI coding.',
     },
     footer: {
       inspired: 'Inspired by a post by',
@@ -159,6 +164,11 @@ export const t = {
       description: 'Katso kuinka tämä koko projekti – ideasta julkaisuun – rakennettiin tekoälyavusteisesti. Katso koko läpikäynti Variation Scouting -kanavalta.',
       watchButton: 'Katso YouTubessa',
       back: 'Takaisin etusivulle',
+      techTitle: 'Tekniselle yleisölle',
+      techDescription: 'Koko sivuston lähdekoodi on avoimesti saatavilla. Tutki koodia, forkkaa se tai käytä referenssinä omissa tekoälyavusteisissa projekteissasi.',
+      githubButton: 'Katso GitHubissa',
+      mobileFixTitle: 'Mobiilikokemuksen korjaus',
+      mobileFixDescription: 'Mobiilikokemus korjattiin vain 3 promptilla käyttäen Claude Codea & Opus 4.6:aa. Ongelmien tunnistamisesta viimeistellyksi mobiilikäyttöliittymäksi — kaikki keskustelevalla tekoälykoodauksella.',
     },
     footer: {
       inspired: 'Inspiraatio: postaus käyttäjältä',
