@@ -239,79 +239,95 @@ export function Simulator() {
                   </div>
                 </div>
 
-                {/* Manual steps checklist */}
-                <div className="mb-6">
-                  <p className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-3">{tr.manualSteps}</p>
-                  <div className="flex flex-col gap-2">
-                    {manualSteps.map((step, i) => (
-                      <button
-                        key={i}
-                        onClick={() => setManualStep(s => Math.max(s, i + 1))}
-                        className={`flex items-center gap-3 p-3 rounded-xl border text-left transition-all duration-200 ${manualStep > i
-                          ? 'bg-emerald-50 border-emerald-200 text-emerald-700'
-                          : manualStep === i
-                            ? 'bg-amber-50 border-amber-200 text-amber-700 cursor-pointer hover:bg-amber-100'
-                            : 'bg-slate-50 border-slate-200 text-slate-400 cursor-not-allowed'
-                          }`}
-                        disabled={manualStep < i}
-                      >
-                        <span className={`w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 ${manualStep > i ? 'bg-emerald-500 text-white' : 'bg-slate-300 text-white'
-                          }`}>{manualStep > i ? '✓' : i + 1}</span>
-                        <span className="text-sm font-medium">{step}</span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
 
                 {/* Raw description */}
-                <div className="mb-6 bg-slate-50 rounded-xl p-4 max-h-40 overflow-y-auto">
-                  <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">{lang === 'fi' ? 'Vahinkoilmoitus' : 'Claim Description'}</p>
-                  <p className="text-slate-700 text-sm leading-relaxed">
+                <div className={`mb-6 rounded-2xl p-6 border transition-all duration-300 ${manualStep >= 1 ? 'bg-emerald-50/50 border-emerald-100' : 'bg-slate-50 border-slate-200'}`}>
+                  <div className="flex items-center justify-between mb-3">
+                    <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">{lang === 'fi' ? 'Vahinkoilmoitus' : 'Claim Description'}</p>
+                    {manualStep >= 1 && <span className="text-emerald-600 text-xs font-bold">✓ {lang === 'fi' ? 'Luettu' : 'Read'}</span>}
+                  </div>
+                  <p className="text-slate-700 text-sm leading-relaxed mb-4">
                     {lang === 'fi' ? claim.rawDescription : claim.rawDescriptionEn}
                   </p>
+                  {manualStep === 0 && (
+                    <button
+                      onClick={() => setManualStep(1)}
+                      className="w-full bg-slate-800 hover:bg-slate-700 text-white text-sm font-semibold py-2.5 rounded-xl transition-all active:scale-95"
+                    >
+                      {lang === 'fi' ? 'Merkitse luetuksi' : 'Mark as read'} 📖
+                    </button>
+                  )}
                 </div>
 
                 {/* Policy excerpt */}
-                <div className="mb-6 bg-amber-50 border border-amber-200 rounded-xl p-4 max-h-32 overflow-y-auto">
-                  <p className="text-xs font-semibold text-amber-600 uppercase tracking-wide mb-2">{lang === 'fi' ? 'Vakuutusehdot (ote)' : 'Policy Terms (excerpt)'}</p>
-                  <p className="text-slate-700 text-sm leading-relaxed">
+                <div className={`mb-6 rounded-2xl p-6 border transition-all duration-300 ${manualStep < 1 ? 'opacity-50 grayscale pointer-events-none' : manualStep >= 2 ? 'bg-emerald-50/50 border-emerald-100' : 'bg-amber-50 border-amber-200'}`}>
+                  <div className="flex items-center justify-between mb-3">
+                    <p className="text-xs font-semibold text-amber-600 uppercase tracking-wide">{lang === 'fi' ? 'Vakuutusehdot (ote)' : 'Policy Terms (excerpt)'}</p>
+                    {manualStep >= 2 && <span className="text-emerald-600 text-xs font-bold">✓ {lang === 'fi' ? 'Tarkistettu' : 'Checked'}</span>}
+                  </div>
+                  <p className="text-slate-700 text-sm leading-relaxed mb-4">
                     {lang === 'fi' ? claim.policyExcerpt : claim.policyExcerptEn}
                   </p>
+                  {manualStep === 1 && (
+                    <button
+                      onClick={() => setManualStep(2)}
+                      className="w-full bg-amber-600 hover:bg-amber-500 text-white text-sm font-semibold py-2.5 rounded-xl transition-all active:scale-95"
+                    >
+                      {lang === 'fi' ? 'Tarkista ehdot' : 'Check coverage'} 🔍
+                    </button>
+                  )}
                 </div>
 
-                {/* Amount input */}
-                {manualStep >= 3 && (
-                  <div className="mb-6 grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1">{tr.approvedAmount} (€)</label>
-                      <input
-                        type="number"
-                        value={approvedAmountInput}
-                        onChange={e => setApprovedAmountInput(e.target.value)}
-                        placeholder={claim.approvedAmount.toString()}
-                        className="w-full border border-slate-300 rounded-xl px-4 py-3 text-slate-800 font-mono text-lg focus:outline-none focus:ring-2 focus:ring-slate-400"
-                      />
-                    </div>
-                    <div>
-                      <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1">{tr.policyLimit} (€)</label>
-                      <div className="border border-slate-200 bg-slate-50 rounded-xl px-4 py-3 text-slate-600 font-mono text-lg">
-                        {claim.policyLimit.toLocaleString()}
-                      </div>
-                    </div>
+                {/* Amount input block */}
+                <div className={`mb-6 rounded-2xl p-6 border transition-all duration-300 ${manualStep < 2 ? 'opacity-50 grayscale pointer-events-none' : manualStep >= 3 ? 'bg-emerald-50/50 border-emerald-100' : 'bg-slate-50 border-slate-200'}`}>
+                  <div className="flex items-center justify-between mb-4">
+                    <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide">{lang === 'fi' ? 'Laskenta' : 'Calculation'}</p>
+                    {manualStep >= 3 && <span className="text-emerald-600 text-xs font-bold">✓ {lang === 'fi' ? 'Laskettu' : 'Calculated'}</span>}
                   </div>
-                )}
 
-                {/* Justification */}
-                {manualStep >= 3 && (
-                  <div className="mb-6">
-                    <textarea
-                      value={justification}
-                      onChange={e => setJustification(e.target.value)}
-                      placeholder={tr.justification}
-                      className="w-full border border-slate-300 rounded-xl px-4 py-3 text-slate-700 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-slate-400 h-24"
-                    />
-                  </div>
-                )}
+                  {manualStep >= 2 && (
+                    <>
+                      <div className="grid grid-cols-2 gap-4 mb-4">
+                        <div>
+                          <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1">{tr.approvedAmount} (€)</label>
+                          <input
+                            type="number"
+                            value={approvedAmountInput}
+                            onChange={e => setApprovedAmountInput(e.target.value)}
+                            placeholder={claim.approvedAmount.toString()}
+                            className="w-full border border-slate-300 rounded-xl px-4 py-3 text-slate-800 font-mono text-lg focus:outline-none focus:ring-2 focus:ring-slate-400"
+                          />
+                        </div>
+                        <div>
+                          <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1">{tr.policyLimit} (€)</label>
+                          <div className="border border-slate-200 bg-white rounded-xl px-4 py-3 text-slate-600 font-mono text-lg">
+                            {claim.policyLimit.toLocaleString()}
+                          </div>
+                        </div>
+                      </div>
+
+                      {manualStep === 2 ? (
+                        <button
+                          onClick={() => setManualStep(3)}
+                          className="w-full bg-slate-800 hover:bg-slate-700 text-white text-sm font-semibold py-2.5 rounded-xl transition-all active:scale-95"
+                        >
+                          {lang === 'fi' ? 'Vahvista laskelma' : 'Confirm calculation'} 🧮
+                        </button>
+                      ) : (
+                        <div className="mb-0">
+                          <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-2">{tr.justification}</p>
+                          <textarea
+                            value={justification}
+                            onChange={e => setJustification(e.target.value)}
+                            placeholder={tr.justification}
+                            className="w-full border border-slate-300 rounded-xl px-4 py-3 text-slate-700 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-slate-400 h-24"
+                          />
+                        </div>
+                      )}
+                    </>
+                  )}
+                </div>
+
 
                 {/* Decision buttons */}
                 <div className="flex gap-3 flex-wrap">
