@@ -121,7 +121,7 @@ export default function MaijuPage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="#deck"
-              className="bg-teal-600 hover:bg-teal-500 text-white px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-200 shadow-lg shadow-teal-900/50 hover:shadow-teal-900/70 active:scale-95"
+              className="bg-teal-600 hover:bg-teal-500 text-white px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-200 shadow-lg shadow-teal-900/50 hover:shadow-teal-900/70 active:scale-[0.97]"
             >
               View the Strategy Deck →
             </a>
@@ -382,7 +382,7 @@ export default function MaijuPage() {
             <button
               onClick={prev}
               aria-label="Previous slide"
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 w-12 h-12 bg-white rounded-2xl shadow-lg border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-slate-50 hover:shadow-xl transition-all active:scale-95 focus:outline-none focus:ring-2 focus:ring-teal-500"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 w-12 h-12 bg-white rounded-2xl shadow-lg border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-slate-50 hover:shadow-xl transition-all active:scale-[0.92] focus:outline-none focus:ring-2 focus:ring-teal-500"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -391,7 +391,7 @@ export default function MaijuPage() {
             <button
               onClick={next}
               aria-label="Next slide"
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 w-12 h-12 bg-white rounded-2xl shadow-lg border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-slate-50 hover:shadow-xl transition-all active:scale-95 focus:outline-none focus:ring-2 focus:ring-teal-500"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 w-12 h-12 bg-white rounded-2xl shadow-lg border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-slate-50 hover:shadow-xl transition-all active:scale-[0.92] focus:outline-none focus:ring-2 focus:ring-teal-500"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

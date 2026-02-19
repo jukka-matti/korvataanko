@@ -49,10 +49,10 @@ export function ThemeSwitcher() {
                 <button
                   key={id}
                   onClick={() => { setThemeId(id); setOpen(false); }}
-                  className={`w-full flex items-center gap-3 px-3 py-3 rounded-xl transition-all duration-200 text-left group ${
+                  className={`w-full flex items-center gap-3 px-3 py-3.5 rounded-xl transition-all duration-200 text-left group active:scale-[0.98] ${
                     isActive
                       ? 'bg-slate-900 shadow-lg'
-                      : 'hover:bg-slate-50'
+                      : 'hover:bg-slate-50 active:bg-slate-100'
                   }`}
                 >
                   {/* Color swatch */}
@@ -109,7 +109,7 @@ export function ThemeSwitcher() {
       {/* Toggle button */}
       <button
         onClick={() => setOpen((o) => !o)}
-        className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl shadow-xl flex items-center justify-center text-lg sm:text-xl transition-all duration-200 hover:shadow-2xl active:scale-95 border ${
+        className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl shadow-xl flex items-center justify-center text-lg sm:text-xl transition-all duration-200 hover:shadow-2xl active:scale-[0.92] border ${
           open
             ? 'bg-slate-900 border-slate-700 rotate-12'
             : 'bg-white border-slate-200 hover:border-slate-300'

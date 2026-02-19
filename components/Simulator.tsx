@@ -119,7 +119,7 @@ export function Simulator() {
           <div className="inline-flex bg-white rounded-2xl p-1.5 shadow-lg border border-slate-200">
             <button
               onClick={() => { if (mode !== 'before') reset('before'); }}
-              className={`px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${mode === 'before'
+              className={`px-5 py-3 sm:px-6 sm:py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${mode === 'before'
                 ? 'bg-slate-800 text-white shadow-md'
                 : 'text-slate-500 hover:text-slate-700'
                 }`}
@@ -128,7 +128,7 @@ export function Simulator() {
             </button>
             <button
               onClick={() => { if (mode !== 'after') reset('after'); }}
-              className={`px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${mode === 'after'
+              className={`px-5 py-3 sm:px-6 sm:py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${mode === 'after'
                 ? 'bg-indigo-600 text-white shadow-md'
                 : 'text-slate-500 hover:text-slate-700'
                 }`}
@@ -191,7 +191,7 @@ export function Simulator() {
                     </p>
                     <button
                       onClick={() => setStarted(true)}
-                      className="bg-slate-800 hover:bg-slate-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 shadow-lg hover:shadow-xl active:scale-95"
+                      className="bg-slate-800 hover:bg-slate-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 shadow-lg hover:shadow-xl active:scale-[0.97]"
                     >
                       {tr.startBefore}
                     </button>
@@ -212,7 +212,7 @@ export function Simulator() {
                     </p>
                     <button
                       onClick={() => setStarted(true)}
-                      className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 shadow-lg hover:shadow-xl active:scale-95"
+                      className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 shadow-lg hover:shadow-xl active:scale-[0.97]"
                     >
                       {tr.startAfter}
                     </button>
@@ -252,7 +252,7 @@ export function Simulator() {
                   {manualStep === 0 && (
                     <button
                       onClick={() => setManualStep(1)}
-                      className="w-full bg-slate-800 hover:bg-slate-700 text-white text-sm font-semibold py-2.5 rounded-xl transition-all active:scale-95"
+                      className="w-full bg-slate-800 hover:bg-slate-700 text-white text-sm font-semibold py-3.5 rounded-xl transition-all active:scale-[0.98]"
                     >
                       {lang === 'fi' ? 'Merkitse luetuksi' : 'Mark as read'} 📖
                     </button>
@@ -271,7 +271,7 @@ export function Simulator() {
                   {manualStep === 1 && (
                     <button
                       onClick={() => setManualStep(2)}
-                      className="w-full bg-amber-600 hover:bg-amber-500 text-white text-sm font-semibold py-2.5 rounded-xl transition-all active:scale-95"
+                      className="w-full bg-amber-600 hover:bg-amber-500 text-white text-sm font-semibold py-3.5 rounded-xl transition-all active:scale-[0.98]"
                     >
                       {lang === 'fi' ? 'Tarkista ehdot' : 'Check coverage'} 🔍
                     </button>
@@ -309,7 +309,7 @@ export function Simulator() {
                       {manualStep === 2 ? (
                         <button
                           onClick={() => setManualStep(3)}
-                          className="w-full bg-slate-800 hover:bg-slate-700 text-white text-sm font-semibold py-2.5 rounded-xl transition-all active:scale-95"
+                          className="w-full bg-slate-800 hover:bg-slate-700 text-white text-sm font-semibold py-3.5 rounded-xl transition-all active:scale-[0.98]"
                         >
                           {lang === 'fi' ? 'Vahvista laskelma' : 'Confirm calculation'} 🧮
                         </button>
@@ -334,21 +334,21 @@ export function Simulator() {
                   <button
                     onClick={() => handleDecision('approve')}
                     disabled={manualStep < 3 || justification.length < 5}
-                    className="bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-200 disabled:text-slate-400 disabled:cursor-not-allowed text-white py-3 rounded-xl font-semibold transition-all duration-200 active:scale-95"
+                    className="bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-200 disabled:text-slate-400 disabled:cursor-not-allowed text-white py-4 sm:py-3 rounded-xl font-semibold transition-all duration-200 active:scale-[0.98]"
                   >
                     ✓ {tr.approve}
                   </button>
                   <button
                     onClick={() => handleDecision('reject')}
                     disabled={manualStep < 3 || justification.length < 5}
-                    className="bg-red-600 hover:bg-red-700 disabled:bg-slate-200 disabled:text-slate-400 disabled:cursor-not-allowed text-white py-3 rounded-xl font-semibold transition-all duration-200 active:scale-95"
+                    className="bg-red-600 hover:bg-red-700 disabled:bg-slate-200 disabled:text-slate-400 disabled:cursor-not-allowed text-white py-4 sm:py-3 rounded-xl font-semibold transition-all duration-200 active:scale-[0.98]"
                   >
                     ✗ {tr.reject}
                   </button>
                   <button
                     onClick={() => handleDecision('flag')}
                     disabled={manualStep < 3 || justification.length < 5}
-                    className="bg-amber-500 hover:bg-amber-600 disabled:bg-slate-200 disabled:text-slate-400 disabled:cursor-not-allowed text-white py-3 rounded-xl font-semibold transition-all duration-200 active:scale-95"
+                    className="bg-amber-500 hover:bg-amber-600 disabled:bg-slate-200 disabled:text-slate-400 disabled:cursor-not-allowed text-white py-4 sm:py-3 rounded-xl font-semibold transition-all duration-200 active:scale-[0.98]"
                   >
                     ⚑ {tr.flag}
                   </button>
@@ -449,19 +449,19 @@ export function Simulator() {
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                       <button
                         onClick={() => handleDecision('approve')}
-                        className="bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-semibold transition-all duration-200 active:scale-95 shadow-sm"
+                        className="bg-emerald-600 hover:bg-emerald-700 text-white py-4 sm:py-3 rounded-xl font-semibold transition-all duration-200 active:scale-[0.98] shadow-sm"
                       >
                         ✓ {tr.approve}
                       </button>
                       <button
                         onClick={() => handleDecision('reject')}
-                        className="bg-red-600 hover:bg-red-700 text-white py-3 rounded-xl font-semibold transition-all duration-200 active:scale-95 shadow-sm"
+                        className="bg-red-600 hover:bg-red-700 text-white py-4 sm:py-3 rounded-xl font-semibold transition-all duration-200 active:scale-[0.98] shadow-sm"
                       >
                         ✗ {tr.reject}
                       </button>
                       <button
                         onClick={() => handleDecision('flag')}
-                        className="bg-amber-500 hover:bg-amber-600 text-white py-3 rounded-xl font-semibold transition-all duration-200 active:scale-95 shadow-sm"
+                        className="bg-amber-500 hover:bg-amber-600 text-white py-4 sm:py-3 rounded-xl font-semibold transition-all duration-200 active:scale-[0.98] shadow-sm"
                       >
                         ⚑ {tr.flag}
                       </button>
@@ -527,7 +527,7 @@ export function Simulator() {
                     </p>
                     <button
                       onClick={() => reset('after')}
-                      className="bg-indigo-500 hover:bg-indigo-600 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200 active:scale-95"
+                      className="bg-indigo-500 hover:bg-indigo-600 text-white px-6 py-3.5 rounded-xl font-semibold transition-all duration-200 active:scale-[0.97]"
                     >
                       {tr.tryOtherMode}
                     </button>
@@ -542,7 +542,7 @@ export function Simulator() {
                     </p>
                     <button
                       onClick={() => reset('before')}
-                      className="bg-white text-indigo-700 hover:bg-indigo-50 px-6 py-3 rounded-xl font-semibold transition-all duration-200 active:scale-95"
+                      className="bg-white text-indigo-700 hover:bg-indigo-50 px-6 py-3.5 rounded-xl font-semibold transition-all duration-200 active:scale-[0.97]"
                     >
                       {tr.tryManualMode}
                     </button>
