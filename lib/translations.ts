@@ -69,6 +69,14 @@ export const t = {
       calculateAmount: 'Calculate approved amount',
       manualSteps: 'Manual steps required:',
     },
+    makingOf: {
+      navLabel: 'Making Of',
+      title: 'Behind the Scenes',
+      subtitle: 'Built with Claude Cowork & Next.js',
+      description: 'See how this entire project – from idea to deployment – was built using AI assistance. Watch the full breakdown on the Variation Scouting channel.',
+      watchButton: 'Watch on YouTube',
+      back: 'Back to Home',
+    },
     footer: {
       inspired: 'Inspired by a post by',
       built: 'Built with Claude Cowork',
@@ -143,6 +151,14 @@ export const t = {
       checkCoverage: 'Tarkista vakuutuksen kattavuus',
       calculateAmount: 'Laske hyväksyttävä summa',
       manualSteps: 'Vaaditut manuaaliset vaiheet:',
+    },
+    makingOf: {
+      navLabel: 'Näin tehtiin',
+      title: 'Kulissien takana',
+      subtitle: 'Rakennettu Claude Coworkilla & Next.js:llä',
+      description: 'Katso kuinka tämä koko projekti – ideasta julkaisuun – rakennettiin tekoälyavusteisesti. Katso koko läpikäynti Variation Scouting -kanavalta.',
+      watchButton: 'Katso YouTubessa',
+      back: 'Takaisin etusivulle',
     },
     footer: {
       inspired: 'Inspiraatio: postaus käyttäjältä',

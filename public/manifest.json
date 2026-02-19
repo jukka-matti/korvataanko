@@ -3,7 +3,7 @@
   "short_name": "SHIFT.",
   "description": "Two people. One AI revolution. An interactive experience showing how AI is fundamentally shifting the way we work.",
   "start_url": "/",
-  "display": "standalone",
+  "display": "browser",
   "background_color": "#0f172a",
   "theme_color": "#0f172a",
   "orientation": "portrait-primary",

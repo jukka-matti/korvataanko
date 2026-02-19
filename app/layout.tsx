@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s | SHIFT."
   },
   description: "Two people. One AI revolution. An interactive experience showing how AI is fundamentally shifting the way we work — and what it means for all of us.",
-  manifest: "/manifest.json",
+
   alternates: {
     canonical: '/',
     languages: {
